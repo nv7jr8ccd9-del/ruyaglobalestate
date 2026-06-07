@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rüya Global Estate | Premium Real Estate in Türkiye</title>
+  <meta name="description" content="Rüya Global Estate - Premium villas, land and investment projects in Kocaali, Sakarya, Türkiye." />
+  <meta name="theme-color" content="#0b0b0b" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    window.RUYA_GA_ID = localStorage.getItem('ruya_ga_id') || '';
+    if (window.RUYA_GA_ID) {
+      var s=document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id='+window.RUYA_GA_ID; document.head.appendChild(s);
+      window.dataLayer=window.dataLayer||[]; function gtag(){dataLayer.push(arguments);} window.gtag=gtag;
+      gtag('js', new Date()); gtag('config', window.RUYA_GA_ID);
+    }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand" onclick="showPage('home')" aria-label="Rüya Global Estate home">
+      <div class="logoMark">R</div>
+      <div class="brandText"><strong>RÜYA GLOBAL</strong><span>ESTATE</span></div>
+    </div>
+    <div class="langBox" id="google_translate_element"></div>
+  </header>
+
+  <nav class="nav" aria-label="Main menu">
+    <button onclick="showPage('home')">HOME</button>
+    <button onclick="showPage('villas')">VILLAS</button>
+    <button onclick="showPage('land')">LAND</button>
+    <button onclick="showPage('projects')">PROJECTS</button>
+    <button onclick="showPage('about')">ABOUT</button>
+    <button onclick="showPage('contact')">CONTACT</button>
+  </nav>
+
+  <main>
+    <section id="home" class="page active">
+      <div class="hero card">
+        <div class="heroText">
+          <p class="eyebrow">Premium Real Estate • Kocaali / Sakarya / Türkiye</p>
+          <h1 id="homeTitle">Luxury Villas, Land & Investment Projects</h1>
+          <p id="homeIntro">Rüya Global Estate offers carefully selected villas, sea-view land and project-based investment opportunities for international buyers.</p>
+          <div class="actions"><a class="goldBtn" href="https://wa.me/905342871106">WhatsApp</a><button class="outlineBtn" onclick="showPage('villas')">View Villas</button></div>
+        </div>
+        <img id="heroImage" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80" alt="Luxury villa" />
+      </div>
+      <div class="grid3">
+        <article class="mini card"><h3>Villas</h3><p>Detached, garden, pool and sea-view options.</p></article>
+        <article class="mini card"><h3>Land</h3><p>Investment plots and project-ready locations.</p></article>
+        <article class="mini card"><h3>Projects</h3><p>Pre-sale construction opportunities.</p></article>
+      </div>
+    </section>
+
+    <section id="villas" class="page"><h2>Villas</h2><div id="villasList" class="listings"></div></section>
+    <section id="land" class="page"><h2>Land</h2><div id="landList" class="listings"></div></section>
+    <section id="projects" class="page"><h2>Projects</h2><div id="projectsList" class="listings"></div></section>
+
+    <section id="about" class="page">
+      <div class="about card">
+        <img id="aboutPhoto" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80" alt="Sales manager" />
+        <div><p class="eyebrow">About Us</p><h2 id="aboutTitle">Trusted Real Estate Guidance</h2><p id="aboutText">Welcome to Rüya Global Estate. We help buyers find secure, beautiful and high-value property opportunities in Türkiye with clear communication and professional service.</p><p class="signature" id="signature">Emma Karademir • Sales Manager</p></div>
+      </div>
+    </section>
+
+    <section id="contact" class="page">
+      <div class="contact card">
+        <h2>Contact</h2>
+        <p>For villas, land and investment projects, contact us directly.</p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/905342871106">+90 534 287 11 06</a></p>
+        <p><strong>Email:</strong> <a href="mailto:info@ruyaglobalestate.com">info@ruyaglobalestate.com</a></p>
+        <p><strong>Location:</strong> Kocaali, Sakarya, Türkiye</p>
+      </div>
+    </section>
+  </main>
+
+  <button class="adminFloat" onclick="openAdmin()">Admin</button>
+
+  <div id="adminModal" class="modal" aria-hidden="true">
+    <div class="modalBox">
+      <button class="close" onclick="closeAdmin()">×</button>
+      <h2>Rüya Admin</h2>
+      <div id="loginBox"><input id="adminPass" type="password" placeholder="Password" /><button class="goldBtn" onclick="loginAdmin()">Login</button><p class="small">Password: ruya2026</p></div>
+      <div id="adminPanel" class="hidden">
+        <label>Google Analytics ID (G-XXXX)</label><input id="gaInput" placeholder="G-XXXXXXXXXX" />
+        <label>Home Title</label><input id="editHomeTitle" />
+        <label>Home Intro</label><textarea id="editHomeIntro"></textarea>
+        <label>Hero Image URL</label><input id="editHeroImage" />
+        <label>About Title</label><input id="editAboutTitle" />
+        <label>About Text</label><textarea id="editAboutText"></textarea>
+        <label>Your Photo URL</label><input id="editAboutPhoto" />
+        <label>Signature</label><input id="editSignature" />
+        <hr />
+        <h3>Add Listing</h3>
+        <select id="newType"><option value="villas">Villa</option><option value="land">Land</option><option value="projects">Project</option></select>
+        <input id="newTitle" placeholder="Title" />
+        <input id="newPrice" placeholder="Price" />
+        <input id="newImage" placeholder="Image URL" />
+        <textarea id="newDesc" placeholder="Description"></textarea>
+        <button class="outlineBtn" onclick="addListing()">Add Listing</button>
+        <button class="goldBtn" onclick="saveContent()">Save Changes</button>
+        <button class="outlineBtn" onclick="exportBackup()">Export Backup</button>
+        <textarea id="importData" placeholder="Paste backup here"></textarea><button onclick="importBackup()">Import Backup</button>
+        <p class="small">Not: GitHub Pages’te admin kayıtları bu cihazın tarayıcısında kalıcıdır. Site dosyasına kalıcı yazmak için backup alıp index dosyasını güncellemek gerekir.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>© <span id="year"></span> Rüya Global Estate • Premium Real Estate Türkiye</footer>
+  <script src="script.js"></script>
+  <script type="text/javascript">function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en', includedLanguages:'en,tr,ar,fr,de,ru,es,it,nl,zh-CN,hi,ur,fa,pt,ja,ko', layout:google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');}</script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
